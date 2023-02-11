@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coursework.Tests", "Coursework.Tests\Coursework.Tests.csproj", "{A640773C-6277-4A70-B7AB-875F576A27A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coursework.Tests", "Coursework.Tests\Coursework.Tests.csproj", "{A640773C-6277-4A70-B7AB-875F576A27A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Сoursework.WebApI", "Сoursework.WebApI\Сoursework.WebApI.csproj", "{183CDC45-7F1E-49DC-A18A-A0046C8DB294}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Сoursework.WebApI", "Сoursework.WebApI\Сoursework.WebApI.csproj", "{183CDC45-7F1E-49DC-A18A-A0046C8DB294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coursework.Domain", "Coursework.Domain\Coursework.Domain.csproj", "{609FA90D-B62B-421E-8C07-2F6F1D11F9D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coursework.Domain", "Coursework.Domain\Coursework.Domain.csproj", "{609FA90D-B62B-421E-8C07-2F6F1D11F9D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coursework.Application", "Coursework.Application\Coursework.Application.csproj", "{B40CEC94-6761-498D-8082-167470A8485E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coursework.Application", "Coursework.Application\Coursework.Application.csproj", "{B40CEC94-6761-498D-8082-167470A8485E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coursework.Infrastructure", "Coursework.Infrastructure\Coursework.Infrastructure.csproj", "{9522C9BC-703D-489C-B37D-DEB1EBEB00C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coursework.Infrastructure", "Coursework.Infrastructure\Coursework.Infrastructure.csproj", "{9522C9BC-703D-489C-B37D-DEB1EBEB00C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coursework.Persistence", "Coursework.Persistence\Coursework.Persistence.csproj", "{CE8A4DEE-3A68-45DC-A6B6-FFE94B4685C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Coursework.Persistence", "Coursework.Persistence\Coursework.Persistence.csproj", "{CE8A4DEE-3A68-45DC-A6B6-FFE94B4685C7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85474A45-62A5-44B0-AEF4-EF36DB765058}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		ruleset.ruleset = ruleset.ruleset
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
