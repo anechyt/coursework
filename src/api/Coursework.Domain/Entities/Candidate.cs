@@ -1,17 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Coursework.Domain.Entities
+﻿namespace Coursework.Domain.Entities
 {
     public class Candidate
     {
         public Guid GID { get; set; }
 
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
+        public string LastName { get; set; } = null!;
 
+        public string? PhoneNumber { get; set; }
+
+        public string? ProfileImageUrl { get; set; }
+
+        public string? Biography { get; set; }
+
+        public string ResumeUrl { get; set; } = null!;
+
+        public Guid UserGID { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

@@ -1,0 +1,48 @@
+.mat-toolbar {
+  background-color: #E5E9EB;
+}
+
+.mat-toolbar {
+  background-color: #E5E9EB;
+  color: #E7EBDC;
+}
+
+.content {
+  height: 120vh;
+}
+
+.logo {
+  color: #353641;
+  cursor: pointer;
+}
+
+.menu-content {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 1rem;
+}
+
+.menu-content a {
+  text-decoration: none;
+}
+
+.mat-button {
+  color: #353641;
+}
+
+.mat-button:hover {
+  color: #B95662;
+}
+
+.auth-button {
+  color: #353641;
+  margin: 1rem;
+}
+
+.auth-button:hover {
+  color: #B95662;
+  margin: 1rem;
+}
+
