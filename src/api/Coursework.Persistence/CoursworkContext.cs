@@ -15,6 +15,14 @@ namespace Coursework.Persistence
 
         public virtual DbSet<Recruiter> Recruiters { get; set; } = null!;
 
+        public virtual DbSet<Skill> Skills { get; set; } = null!;
+
+        public virtual DbSet<Vacancy> Vacancies { get; set; } = null!;
+
+        public virtual DbSet<VacancySkill> VacancySkills { get; set; } = null!;
+
+        public virtual DbSet<VacancyStatus> VacancyStatuses { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
