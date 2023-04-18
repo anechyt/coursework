@@ -1,0 +1,4 @@
+<div class="form-group">
+  <label *ngIf="label != null">{{ label }}</label>
+  <input type="text" [placeholder]="placeholder" [class]="inputClass" [value]="value" (input)="onChange($event)" required>
+</div>

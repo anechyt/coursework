@@ -14,6 +14,12 @@ namespace Coursework.Persistence.Configurations
 
             builder.Property(e => e.LastName).HasMaxLength(50);
 
+            builder.Property(e => e.CompanyName).HasMaxLength(50);
+
+            builder.Property(e => e.PhoneNumber).HasMaxLength(50);
+
+            builder.Property(e => e.Location).HasMaxLength(50);
+
             builder.HasOne(d => d.User)
                 .WithMany(p => p.Recruiters)
                 .HasForeignKey(d => d.UserGID)

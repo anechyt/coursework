@@ -8,13 +8,13 @@
 
         public string LastName { get; set; } = null!;
 
-        public string? PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = null!;
 
-        public string? ProfileImageUrl { get; set; }
+        public string Biography { get; set; } = null!;
 
-        public string? Biography { get; set; }
+        public string Resume { get; set; } = null!;
 
-        public string ResumeUrl { get; set; } = null!;
+        public string Location { get; set; }
 
         public Guid UserGID { get; set; }
 

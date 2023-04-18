@@ -1,0 +1,17 @@
+<div *ngIf="isShowContent" class="main-container">
+  <div class="title">
+    <div class="text">Recruiter Profile Setting</div>
+  </div>
+  <div class="header-container">
+    <app-input inputClass="input" placeholder="FirstName" [(value)]="firstName"></app-input>
+    <app-input inputClass="input" placeholder="LastName" [(value)]="lastName"></app-input>
+    <app-input inputClass="input" placeholder="CompanyName" [(value)]="companyName"></app-input>
+    <app-input inputClass="input" placeholder="PhoneNumber" [(value)]="phoneNumber"></app-input>
+    <app-input inputClass="input" placeholder="Location" [(value)]="location"></app-input>
+    <textarea class="biography" placeholder="Biography" [(ngModel)]="biography"></textarea>
+  </div>
+  <div class="footer-container">
+    <app-button buttonClass="button" (onClick)="handleClick()">Submit</app-button>
+  </div>
+</div>
+

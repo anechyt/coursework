@@ -1,0 +1,49 @@
+.main-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  color: honeydew;
+  margin-bottom: 1.5rem;
+  font-size: x-large;
+}
+
+.biography {
+  margin-bottom: 1rem;
+  border-radius: 0.7rem;
+  border: none;
+  width: 23rem;
+  height: 23rem;
+  background-color: #202531;
+  color: lavender;
+  font-size: large;
+  padding-left: 1.3rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  resize: none;
+  padding-top: 0.8rem;
+}
+
+.biography:focus {
+  outline: none;
+}
+
+.biography::placeholder {
+  color: #62666E;
+  font-size: large;
+}
+
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

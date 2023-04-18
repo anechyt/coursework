@@ -1,0 +1,52 @@
+.main-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  color: honeydew;
+  margin-bottom: 1.5rem;
+  font-size: x-large;
+}
+
+.roles {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.additional-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.additional-text {
+  color: #62666E;
+  margin-left: 1.1rem;
+}
+
+.link {
+  color: #62666E;
+  margin-left: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.role {
+  color: honeydew;
+}
+

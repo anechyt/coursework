@@ -1,0 +1,22 @@
+<div class="main-container">
+  <div class="title">
+    <div class="text">Sign Up</div>
+  </div>
+  <div class="header-container">
+    <app-input inputClass="input" placeholder="Email" [(value)]="email"></app-input>
+    <app-input inputClass="input" placeholder="Password" [(value)]="password"></app-input>
+    <div class="roles">
+      <input type="radio" id="recruiter" name="contact" value="recruiter" (change)="onItemChange($event)"/>
+      <label class="role" for="recruiter">Recruiter</label>
+      <input type="radio" id="candidate" name="contact" value="candidate" (change)="onItemChange($event)"/>
+      <label class="role" for="candidate">Candidate</label>
+    </div>
+  </div>
+  <div class="footer-container">
+    <app-button buttonClass="button" (onClick)="handleClick()">Submit</app-button>
+    <div class="additional-info">
+      <label class="additional-text">Already have an account?</label>
+      <a class="link" routerLink="">Sign In</a>
+    </div>
+  </div>
+</div>

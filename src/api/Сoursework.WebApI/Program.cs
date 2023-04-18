@@ -2,6 +2,7 @@ using Coursework.Application.Auth.Abstract;
 using Coursework.Application.Auth.Options;
 using Coursework.Application.Auth.Services;
 using Coursework.Application.Auth.TokenGenerators;
+using Coursework.Application.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -10,6 +11,8 @@ using Ñoursework.WebApI.Infrastructure.Data.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDatabase(builder.Configuration);
+
+builder.Services.AddApplication();
 
 JwtOptions jwtOptions = new JwtOptions();
 builder.Configuration.Bind("JwtOptions", jwtOptions);
@@ -43,6 +46,17 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.WithOrigins(new[] { "http://localhost:4200" })
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -52,6 +66,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 

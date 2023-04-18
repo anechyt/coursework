@@ -27,8 +27,7 @@ namespace Сoursework.WebApI.Controllers
             _refreshTokenRepository = refreshTokenRepository;
         }
 
-        [Route("/login")]
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] LoginDto model)
         {
             if (!ModelState.IsValid)
@@ -55,8 +54,7 @@ namespace Сoursework.WebApI.Controllers
             return Ok(response);
         }
 
-        [Route("/register")]
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterDto model)
         {
             if (!ModelState.IsValid)
@@ -71,13 +69,12 @@ namespace Сoursework.WebApI.Controllers
                 Role = model.Role
             };
 
-            await _securityRepository.Registration(registrationUser);
+            var response = await _securityRepository.Registration(registrationUser);
 
-            return Ok();
+            return Ok(response);
         }
 
-        [Route("/refresh")]
-        [HttpPost]
+        [HttpPost("refresh")]
         public async Task<ActionResult> RefreshToken([FromBody] RefreshTokenDto model)
         {
             if (!ModelState.IsValid)
@@ -108,8 +105,7 @@ namespace Сoursework.WebApI.Controllers
         }
 
         [Authorize]
-        [Route("/logout")]
-        [HttpDelete]
+        [HttpDelete("logout")]
         public async Task<ActionResult> Logout()
         {
             string rawUserGID = HttpContext.User.FindFirstValue("UserGID");

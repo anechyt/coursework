@@ -29,6 +29,7 @@ namespace Coursework.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Biography")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -41,14 +42,16 @@ namespace Coursework.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("ProfileImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ResumeUrl")
+                    b.Property<string>("Resume")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -68,6 +71,15 @@ namespace Coursework.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Biography")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -78,8 +90,15 @@ namespace Coursework.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("ProfileImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<Guid>("UserGID")
                         .HasColumnType("uniqueidentifier");

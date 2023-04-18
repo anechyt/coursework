@@ -8,11 +8,24 @@
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Mediator.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Mediator.SourceGenerator" Version="2.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Riok.Mapperly" Version="2.7.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Coursework.Domain\Coursework.Domain.csproj" />
+    <ProjectReference Include="..\Coursework.Infrastructure\Coursework.Infrastructure.csproj" />
     <ProjectReference Include="..\Coursework.Persistence\Coursework.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Candidates\Queries\GetCandidateByLocation\" />
+    <Folder Include="Skills\Queries\" />
+    <Folder Include="VacancyStatuses\Queries\" />
   </ItemGroup>
 
 </Project>

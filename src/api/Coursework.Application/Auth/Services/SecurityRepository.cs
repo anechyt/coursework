@@ -45,11 +45,13 @@ namespace Coursework.Application.Auth.Services
             {
                 AccessToken = accessToken.Value,
                 AccessTokenExpirationTime = accessToken.ExpirationTime,
-                RefreshToken = refreshToken
+                RefreshToken = refreshToken,
+                Role = user.Role,
+                UserGID = user.GID.ToString()
             };
         }
 
-        public async Task Registration(User user)
+        public async Task<RegisterResult> Registration(User user)
         {
             var emailAlredyExist = await _userRepository.GetByEmailAsync(user.Email);
             if (emailAlredyExist != null)
@@ -66,6 +68,16 @@ namespace Coursework.Application.Auth.Services
 
             await _coursworkContext.Users.AddAsync(newUser);
             await _coursworkContext.SaveChangesAsync();
+
+            AccessToken accessToken = _accessTokenGenerator.GenerateToken(newUser);
+
+            return new RegisterResult
+            {
+                AccessToken = accessToken.Value,
+                AccessTokenExpirationTime = accessToken.ExpirationTime,
+                UserGID = newUser.GID.ToString(),
+                Role = newUser.Role
+            };
         }
     }
 }

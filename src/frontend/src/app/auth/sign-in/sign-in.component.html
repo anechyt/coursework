@@ -1,0 +1,16 @@
+<div class="main-container">
+  <div class="title">
+    <div class="text">Sign In</div>
+  </div>
+  <div class="header-container">
+    <app-input inputClass="input" placeholder="Email" [(value)]="email"></app-input>
+    <app-input inputClass="input" placeholder="Password" [(value)]="password"></app-input>
+  </div>
+  <div class="footer-container">
+    <app-button buttonClass="button" (onClick)="handleClick()">Submit</app-button>
+    <div class="additional-info">
+      <label class="additional-text">Don't have an account?</label>
+      <a class="link" routerLink="/sign-up">Sign Up</a>
+    </div>
+  </div>
+</div>
