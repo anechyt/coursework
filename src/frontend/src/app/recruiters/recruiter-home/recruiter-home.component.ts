@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RecruiterService } from "../services/recruiter.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-recruiter-home',
@@ -9,10 +11,10 @@ export class RecruiterHomeComponent implements OnInit {
   public firstName: string | null = null;
   public lastName: string | null = null;
 
-  constructor() { }
+  constructor(private recruiterService: RecruiterService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    this.firstName = localStorage.getItem("FIRSTNAME");
-    this.lastName = localStorage.getItem("LASTNAME");
+
   }
 }

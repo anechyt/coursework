@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  background-color: #1A1E2B;
+}
+
+.header-container {
+  display: flex;
+  padding: 1rem 1rem 1rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 85rem;
+  margin: 0 auto;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+}
+
+.item {
+  color: honeydew;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.profile-item {
+  color: honeydew;
+  margin-right: 1rem;
+}

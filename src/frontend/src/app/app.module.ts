@@ -8,6 +8,7 @@ import { SharedModule } from "./shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { CandidatesModule } from "./candidates/candidates.module";
 import { RecruitersModule } from "./recruiters/recruiters.module";
+import { ProfileSettingsModule } from "./profile-settings/profile-settings.module";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RecruitersModule } from "./recruiters/recruiters.module";
     SharedModule,
     HttpClientModule,
     CandidatesModule,
-    RecruitersModule
+    RecruitersModule,
+    ProfileSettingsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

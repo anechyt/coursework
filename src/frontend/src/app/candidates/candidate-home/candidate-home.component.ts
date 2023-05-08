@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CandidateService } from "../services/candidate.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-candidate-home',
@@ -7,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateHomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private candidateService: CandidateService,
+              private router: Router) { }
 
   ngOnInit(): void {
   }
-
 }

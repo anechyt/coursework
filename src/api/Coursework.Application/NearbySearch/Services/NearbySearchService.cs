@@ -83,5 +83,25 @@ namespace Coursework.Application.NearbySearch.Services
 
         private double DoubleToRadians(double angle)
             => Math.PI * angle / 180.0;
+
+        public async Task<Location> GetLocationByAddress(string address, CancellationToken cancellationToken)
+        {
+            var location = new Location() { };
+
+            var referenceAddressDataResponse = await _maptilerService.
+                GetDataByAddress(address.ReplaceSpaceAndComma(), cancellationToken);
+
+            if (referenceAddressDataResponse.Features.Count == 0)
+            {
+                throw new Exception($"Address {address} not found");
+            }
+
+            var coordinates = referenceAddressDataResponse.Features.FirstOrDefault().Center;
+
+            location.Latitude = coordinates[1].ToString();
+            location.Longitude = coordinates[0].ToString();
+
+            return location;
+        }
     }
 }

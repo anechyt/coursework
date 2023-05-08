@@ -14,6 +14,7 @@ export class AuthRecruiterGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     const role = localStorage.getItem("ROLE");
+    console.log(role, 'guard');
     return role === 'recruiter' ? true: this.router.navigate(['']);
   }
 

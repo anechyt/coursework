@@ -1,8 +1,10 @@
 ﻿using Coursework.Application.Auth.Abstract;
 using Coursework.Application.Auth.Models;
 using Coursework.Domain.Entities;
+using Coursework.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Сoursework.WebApI.Controllers
@@ -15,16 +17,19 @@ namespace Сoursework.WebApI.Controllers
         private readonly IUserRepository _userRepository;
         private readonly ISecurityRepository _securityRepository;
         private readonly IRefreshTokenRepository _refreshTokenRepository;
+        private readonly CoursworkContext _context;
 
         public SecurityController(IPasswordHasher passwordHasher,
             IUserRepository userRepository,
             ISecurityRepository securityRepository,
-            IRefreshTokenRepository refreshTokenRepository)
+            IRefreshTokenRepository refreshTokenRepository,
+            CoursworkContext context)
         {
             _passwordHasher = passwordHasher;
             _userRepository = userRepository;
             _securityRepository = securityRepository;
             _refreshTokenRepository = refreshTokenRepository;
+            _context = context;
         }
 
         [HttpPost("login")]
@@ -118,6 +123,24 @@ namespace Сoursework.WebApI.Controllers
             await _refreshTokenRepository.DeleteAllAsync(userGID);
 
             return NoContent();
+        }
+
+        [HttpGet("users")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            var users = await _context.Users.AsNoTracking().ToListAsync();
+            return Ok(users);
+        }
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> DeleteUser(Guid userGID)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.GID == userGID);
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(user);
         }
     }
 }

@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
-import { RecruiterCreateComponent } from "./recruiter-create/recruiter-create.component";
 import { RecruiterHomeComponent } from "./recruiter-home/recruiter-home.component";
 import { RecruiterLayoutComponent } from "./recruiter-layout/recruiter-layout.component";
 import { RecruiterCandidatesComponent } from "./recruiter-candidates/recruiter-candidates.component";
@@ -14,8 +13,7 @@ const routes: Routes = [
       { path: 'vacancies', component: RecruiterVacanciesComponent },
       { path: 'statistics', component: RecruiterStatisticsComponent }
     ]
-  },
-  { path: 'create', component: RecruiterCreateComponent }
+  }
 ];
 
 @NgModule({

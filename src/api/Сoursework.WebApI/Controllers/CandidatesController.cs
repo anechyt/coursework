@@ -1,6 +1,7 @@
 ﻿using Coursework.Application.Candidates.Commands.CreateCandidate;
 using Coursework.Application.Candidates.Commands.DeleteCandidate;
 using Coursework.Application.Candidates.Commands.UpdateCandidate;
+using Coursework.Application.Candidates.Queries.GetCandidateByUserGID;
 using Coursework.Persistence;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -21,28 +22,28 @@ namespace Сoursework.WebApI.Controllers
             _context = context;
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<IActionResult> CreateCandidate([FromBody] CreateCandidateRequest createCandidateRequest)
         {
             var result = await _mediator.Send(createCandidateRequest);
             return Ok(result);
         }
 
-        [HttpDelete]
+        [HttpDelete("delete")]
         public async Task<IActionResult> DeleteCandidate([FromBody] DeleteCandidateRequest deleteCandidateRequest)
         {
             var result = await _mediator.Send(deleteCandidateRequest);
             return Ok(result);
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         public async Task<IActionResult> UpdateCandidate([FromBody] UpdateCandidateRequest updateCandidateRequest)
         {
             var result = await _mediator.Send(updateCandidateRequest);
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("candidates")]
         public async Task<IActionResult> GetAllCandidates()
         {
             var candidates = await _context.Candidates.Join(_context.Users,
@@ -62,6 +63,14 @@ namespace Сoursework.WebApI.Controllers
                 }).ToListAsync();
 
             return Ok(candidates);
+        }
+
+        [HttpGet("candidatebyusergid")]
+        public async Task<IActionResult> GetCandidateByUserGID(string userGID)
+        {
+            var result = await _mediator.Send(new GetCandidateByUserGIDRequest { UserGID = Guid.Parse(userGID) });
+
+            return Ok(result);
         }
     }
 }

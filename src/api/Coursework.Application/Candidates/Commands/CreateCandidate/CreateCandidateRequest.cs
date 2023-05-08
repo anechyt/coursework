@@ -17,6 +17,6 @@ namespace Coursework.Application.Candidates.Commands.CreateCandidate
 
         public string Location { get; set; } = null!;
 
-        public Guid UserGID { get; set; }
+        public string UserGID { get; set; }
     }
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RecruiterHomeComponent } from './recruiter-home/recruiter-home.component';
-import { RecruiterCreateComponent } from './recruiter-create/recruiter-create.component';
 import { RecruiterRoutingModule } from "./recruiter-routing.module";
 import { SharedModule } from "../shared/shared.module";
 import { FormsModule } from "@angular/forms";
@@ -14,7 +13,6 @@ import { RecruiterStatisticsComponent } from './recruiter-statistics/recruiter-s
 @NgModule({
   declarations: [
     RecruiterHomeComponent,
-    RecruiterCreateComponent,
     RecruiterLayoutComponent,
     RecruiterHeaderComponent,
     RecruiterCandidatesComponent,

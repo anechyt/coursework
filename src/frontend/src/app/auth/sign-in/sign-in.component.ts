@@ -31,12 +31,8 @@ export class SignInComponent implements OnInit {
         localStorage.setItem("ACCESS_TOKEN", data.accessToken);
         localStorage.setItem("USER_GID", data.userGID);
         localStorage.setItem("ROLE", data.role);
-        if(data.role === 'candidate') {
-          this.router.navigate(['/role-candidate'])
-        }
-        else {
-          this.router.navigate(['/role-recruiter'])
-        }
+
+        this.authService.checkData(data.userGID, data.role);
       }, (error) => {
         console.log(error.status);
       }

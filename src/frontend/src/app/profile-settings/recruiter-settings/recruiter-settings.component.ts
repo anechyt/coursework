@@ -1,41 +1,27 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import { RecruiterService } from "../services/recruiter.service";
-import { Recruiter } from "../models/recruiter";
+import { Component, OnInit } from '@angular/core';
+import { Recruiter } from "../../recruiters/models/recruiter";
 import { Router } from "@angular/router";
+import { ProfileSettingsService } from "../services/profile-settings.service";
 
 @Component({
-  selector: 'app-recruiter-create',
-  templateUrl: './recruiter-create.component.html',
-  styleUrls: ['./recruiter-create.component.scss']
+  selector: 'app-recruiter-settings',
+  templateUrl: './recruiter-settings.component.html',
+  styleUrls: ['./recruiter-settings.component.scss']
 })
-export class RecruiterCreateComponent implements OnInit {
+export class RecruiterSettingsComponent implements OnInit {
   public firstName: string | null = null;
   public lastName: string | null = null;
   public companyName: string | null = null;
   public phoneNumber: string | null = null;
   public biography: string | null = null;
-
   public location: string | null = null;
-  public isShowContent: boolean = false;
   public recruiterRequest!: Recruiter;
 
-  constructor(private recruiterService: RecruiterService,
+  constructor(private profileSettingsService: ProfileSettingsService,
               private router: Router) { }
 
   ngOnInit(): void {
-    const userGID = localStorage.getItem("USER_GID");
-    this.recruiterService.getRecruiterByUserGID(userGID ?? "").subscribe((data) => {
-      if(data != null) {
-        localStorage.setItem("FIRSTNAME", data.firstName ?? "");
-        localStorage.setItem("LASTNAME", data.lastName ?? "");
-        localStorage.setItem("LOCATION", data.location ?? "");
-        this.router.navigate(['home'])
-      } else {
-        this.isShowContent = true;
-      }
-    }, (error) => {
-      console.log(error)
-    });
+    console.log("recruiter settings");
   }
 
   public handleClick(): void {
@@ -57,14 +43,14 @@ export class RecruiterCreateComponent implements OnInit {
     this.recruiterRequest.location = this.location;
     this.recruiterRequest.userGID = localStorage.getItem("USER_GID");
 
-    this.recruiterService.createRecruiter(this.recruiterRequest).subscribe((data) =>
+    this.profileSettingsService.createRecruiter(this.recruiterRequest).subscribe((data) =>
     {
       localStorage.setItem("FIRSTNAME", data.firstName ?? "");
       localStorage.setItem("LASTNAME", data.lastName ?? "");
       localStorage.setItem("LOCATION", data.location ?? "");
-      this.router.navigate(['home'])
+      this.router.navigate(['/role-recruiter'])
     }, (error) => {
       console.log(error);
-      })
+    })
   }
 }
