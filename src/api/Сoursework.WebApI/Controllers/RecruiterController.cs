@@ -1,6 +1,7 @@
 ﻿using Coursework.Application.Recruiters.Commands.CreateRecruiter;
 using Coursework.Application.Recruiters.Commands.DeleteRecruiter;
 using Coursework.Application.Recruiters.Commands.UpdateRecruiter;
+using Coursework.Application.Recruiters.Queries.GetCandidatesNearbyRecruiter;
 using Coursework.Application.Recruiters.Queries.GetRecruiterByUserGID;
 using Coursework.Persistence;
 using Mediator;
@@ -70,6 +71,14 @@ namespace Сoursework.WebApI.Controllers
         public async Task<IActionResult> GetRecruiterByUserGID(string userGID)
         {
             var result = await _mediator.Send(new GetRecruiterByUserGIDRequest { UserGID = Guid.Parse(userGID) });
+
+            return Ok(result);
+        }
+
+        [HttpGet("candidatesnearby")]
+        public async Task<IActionResult> GetCandidateNearByRecruiter(string userGID, int maxDistance)
+        {
+            var result = await _mediator.Send(new GetCandidatesNearbyRecruiterRequest { UserGID = Guid.Parse(userGID), MaxDistance = maxDistance });
 
             return Ok(result);
         }

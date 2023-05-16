@@ -1,6 +1,13 @@
 <div class="home-container">
-  <p class="container-title">Candidates near you</p>
-  <div class="candidate">
-
+  <p class="container-title">Candidates near you ({{location}})</p>
+  <div class="candidate" *ngFor="let candidate of candidates$ | async">
+    <div class="candidate-header">
+      <div class="text initials">{{candidate.firstName}}</div>
+      <div class="text initials">{{candidate.lastName}}</div>
+    </div>
+    <div class="text">Phone {{candidate.phoneNumber}}</div>
+    <div class="text">Location: {{candidate.location}}</div>
+    <div class="text">Bio: {{candidate.biography}}</div>
+    <div class="text">Resume: {{candidate.resume}}</div>
   </div>
 </div>

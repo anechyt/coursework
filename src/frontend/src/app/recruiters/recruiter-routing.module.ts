@@ -8,10 +8,10 @@ import  { RecruiterStatisticsComponent } from "./recruiter-statistics/recruiter-
 
 const routes: Routes = [
   { path: '', component: RecruiterLayoutComponent, children: [
-      { path: 'home', component: RecruiterHomeComponent },
-      { path: 'candidates', component: RecruiterCandidatesComponent },
-      { path: 'vacancies', component: RecruiterVacanciesComponent },
-      { path: 'statistics', component: RecruiterStatisticsComponent }
+      { path: 'recruiter-home', component: RecruiterHomeComponent },
+      { path: 'recruiter-candidates', component: RecruiterCandidatesComponent },
+      { path: 'recruiter-vacancies', component: RecruiterVacanciesComponent },
+      { path: 'recruiter-statistics', component: RecruiterStatisticsComponent }
     ]
   }
 ];

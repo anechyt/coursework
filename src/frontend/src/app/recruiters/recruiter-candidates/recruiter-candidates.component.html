@@ -1,1 +1,14 @@
-<p>recruiter-candidates works!</p>
+<div class="recruiter-candidate-container">
+  <p class="container-title">Candidates</p>
+  <div class="candidate" *ngFor="let candidate of candidates$ | async">
+    <div class="candidate-header">
+      <div class="text initials">{{candidate.firstName}}</div>
+      <div class="text initials">{{candidate.lastName}}</div>
+    </div>
+    <div class="text">Phone {{candidate.phoneNumber}}</div>
+    <div class="text">Location: {{candidate.location}}</div>
+    <div class="text">Bio: {{candidate.biography}}</div>
+    <div class="text">Resume: {{candidate.resume}}</div>
+  </div>
+</div>
+

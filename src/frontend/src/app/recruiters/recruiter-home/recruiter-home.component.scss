@@ -5,6 +5,23 @@
 
 .candidate {
   background-color: #202531;
-  width: 10rem;
-  height: 10rem;
+  width: 40rem;
+  height: 100%;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.candidate-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.text {
+  color: honeydew;
+  margin-bottom: 1rem;
+}
+
+.initials {
+  margin-right: 1rem;
 }

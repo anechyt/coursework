@@ -21,11 +21,11 @@ namespace Coursework.Application.Recruiters.Queries.GetCandidatesNearbyRecruiter
 
         public async ValueTask<GetItemsList<Candidate>> Handle(GetCandidatesNearbyRecruiterRequest request, CancellationToken cancellationToken)
         {
-            var recruiter = await _context.Recruiters.AsNoTracking().FirstOrDefaultAsync(e => e.GID == request.RecruiterGID);
+            var recruiter = await _context.Recruiters.AsNoTracking().FirstOrDefaultAsync(e => e.UserGID == request.UserGID);
             var result = new GetItemsList<Candidate>();
 
             if (recruiter is null)
-                throw new Exception($"Recruiter with Guid {request.RecruiterGID} not found");
+                throw new Exception($"Recruiter with Guid {request.UserGID} not found");
 
             var recruiterLocation = await _nearbySearchService.GetLocationByAddress(recruiter.Location, cancellationToken);
 

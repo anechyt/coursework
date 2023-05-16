@@ -12,6 +12,8 @@
 
         public string Location { get; set; }
 
+        public List<string> Skills { get; set; }
+
         public Guid VacancyStatusGID { get; set; }
 
         public Guid RecruiterGID { get; set; }

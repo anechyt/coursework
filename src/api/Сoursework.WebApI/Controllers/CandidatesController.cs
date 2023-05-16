@@ -2,6 +2,8 @@
 using Coursework.Application.Candidates.Commands.DeleteCandidate;
 using Coursework.Application.Candidates.Commands.UpdateCandidate;
 using Coursework.Application.Candidates.Queries.GetCandidateByUserGID;
+using Coursework.Application.Models.GetAllQuery;
+using Coursework.Domain.Entities;
 using Coursework.Persistence;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -44,7 +46,7 @@ namespace Сoursework.WebApI.Controllers
         }
 
         [HttpGet("candidates")]
-        public async Task<IActionResult> GetAllCandidates()
+        public async Task<IActionResult> GetAllCandidates(CancellationToken cancellationToken)
         {
             var candidates = await _context.Candidates.Join(_context.Users,
                 candidate => candidate.UserGID,
@@ -60,7 +62,7 @@ namespace Сoursework.WebApI.Controllers
                     candidate.UserGID,
                     user.Email,
                     user.Role
-                }).ToListAsync();
+                }).ToListAsync(cancellationToken);
 
             return Ok(candidates);
         }

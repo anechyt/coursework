@@ -6,7 +6,7 @@ namespace Coursework.Application.Recruiters.Queries.GetCandidatesNearbyRecruiter
 {
     public class GetCandidatesNearbyRecruiterRequest : IRequest<GetItemsList<Candidate>>
     {
-        public Guid RecruiterGID { get; set; }
+        public Guid UserGID { get; set; }
 
         public int MaxDistance { get; set; }
     }

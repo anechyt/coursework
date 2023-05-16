@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs";
+import { Candidate } from "../../candidates/models/candidate";
+import { RecruiterService } from "../services/recruiter.service";
 
 @Component({
   selector: 'app-recruiter-candidates',
@@ -6,10 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recruiter-candidates.component.scss']
 })
 export class RecruiterCandidatesComponent implements OnInit {
+  public candidates$!: Observable<Candidate[]>
 
-  constructor() { }
+  constructor(private recruiterService: RecruiterService) { }
 
   ngOnInit(): void {
+    this.candidates$ = this.recruiterService.getCandidates();
   }
 
 }

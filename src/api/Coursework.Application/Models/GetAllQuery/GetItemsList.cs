@@ -2,6 +2,6 @@
 {
     public class GetItemsList<T> where T : class
     {
-        public List<T> Items { get; set; }
+        public List<T> Items { get; set; } = new List<T>();
     }
 }

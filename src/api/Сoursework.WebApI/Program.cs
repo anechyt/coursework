@@ -5,8 +5,8 @@ using Coursework.Application.Auth.TokenGenerators;
 using Coursework.Application.Infrastructure.Extensions;
 using Coursework.Application.NearbySearch.Abstract;
 using Coursework.Application.NearbySearch.Services;
-using Coursework.Application.Recruiters.Queries.GetCandidatesNearbyRecruiter;
 using Coursework.Infrastructure.MaptilerSearch.Abstract;
+using Coursework.Infrastructure.MaptilerSearch.Options;
 using Coursework.Infrastructure.MaptilerSearch.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -23,6 +23,8 @@ JwtOptions jwtOptions = new JwtOptions();
 builder.Configuration.Bind("JwtOptions", jwtOptions);
 
 builder.Services.AddSingleton(jwtOptions);
+
+builder.Services.Configure<MaptilerOptions>(builder.Configuration.GetSection(MaptilerOptions.SectionName));
 
 builder.Services.AddSingleton<JwtTokenGenerator>();
 builder.Services.AddSingleton<AccessTokenGenerator>();
