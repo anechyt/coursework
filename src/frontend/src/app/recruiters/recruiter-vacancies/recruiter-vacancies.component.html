@@ -1,4 +1,7 @@
-<div class="home-container">
-  <p class="container-title">Your Vacancies</p>
-  <p class="container-title">All Vacancies</p>
+<div class="vacancy-container">
+  <div class="container-header">
+    <p class="container-title">Your Vacancies</p>
+    <app-button class="add-button" buttonClass="button" (onClick)="showCreateVacancyModal(1)">Add Vacancy</app-button>
+  </div>
+  <app-create-vacancy-modal (close)="closeModal($event)" *ngIf="showModal === 1"></app-create-vacancy-modal>
 </div>

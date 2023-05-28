@@ -1,0 +1,24 @@
+<div class="vacancy-modal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <p class="text">New Vacancy</p>
+    </div>
+    <div class="modal-body">
+      <app-input inputClass="input" placeholder="Name" [(value)]="name"></app-input>
+      <app-input inputClass="input" placeholder="Description" [(value)]="description"></app-input>
+      <app-input inputClass="input" placeholder="Salary" [(value)]="salary"></app-input>
+      <app-input inputClass="input" placeholder="Location" [(value)]="location"></app-input>
+      <ul class="skills">
+        <li class="skill" *ngFor="let skill of skills">
+          {{ skill }}
+        </li>
+      </ul>
+      <app-input inputClass="input" placeholder="Skill" [(value)]="skill"></app-input>
+      <app-button buttonClass="button" (onClick)="addSkill()">Add Skill</app-button>
+    </div>
+    <div class="modal-footer">
+      <app-button class="close-button" buttonClass="button" (onClick)="addVacancy()">Submit</app-button>
+      <app-button class="close-button" buttonClass="button" (onClick)="closeModal()">Close</app-button>
+    </div>
+  </div>
+</div>

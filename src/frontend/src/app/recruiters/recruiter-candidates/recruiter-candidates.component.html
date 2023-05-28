@@ -29,7 +29,7 @@
         </li>
       </ul>
       <app-input inputClass="input" placeholder="Search By Skills" [(value)]="skill"></app-input>
-      <app-button buttonClass="button" (onClick)="refreshCandidates()">Search</app-button>
+      <app-button buttonClass="button" (onClick)="searchBySkills()">Search</app-button>
       <app-button buttonClass="button" (onClick)="addSkill()">Add Skill</app-button>
     </div>
     <div class="search-item">
@@ -39,7 +39,7 @@
         </li>
       </ul>
       <app-input inputClass="input" placeholder="Search By Bio" [(value)]="bio"></app-input>
-      <app-button buttonClass="button" (onClick)="refreshCandidates()">Search</app-button>
+      <app-button buttonClass="button" (onClick)="searchByBio()">Search</app-button>
       <app-button buttonClass="button" (onClick)="addBio()">Add Bio</app-button>
     </div>
     <div class="search-item">
@@ -49,7 +49,7 @@
         </li>
       </ul>
       <app-input inputClass="input" placeholder="Search By Resume" [(value)]="resume"></app-input>
-      <app-button buttonClass="button" (onClick)="refreshCandidates()">Search</app-button>
+      <app-button buttonClass="button" (onClick)="searchByResume()">Search</app-button>
       <app-button buttonClass="button" (onClick)="addResume()">Add Resume</app-button>
     </div>
   </div>

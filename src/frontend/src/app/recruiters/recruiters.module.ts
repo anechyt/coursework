@@ -9,6 +9,8 @@ import { RecruiterHeaderComponent } from './recruiter-header/recruiter-header.co
 import { RecruiterCandidatesComponent } from './recruiter-candidates/recruiter-candidates.component';
 import { RecruiterVacanciesComponent } from './recruiter-vacancies/recruiter-vacancies.component';
 import { RecruiterStatisticsComponent } from './recruiter-statistics/recruiter-statistics.component';
+import { VacancyModule } from "../vacancy/vacancy.module";
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { RecruiterStatisticsComponent } from './recruiter-statistics/recruiter-s
     CommonModule,
     RecruiterRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    VacancyModule
   ]
 })
 export class RecruitersModule { }

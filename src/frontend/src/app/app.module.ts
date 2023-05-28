@@ -9,10 +9,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { CandidatesModule } from "./candidates/candidates.module";
 import { RecruitersModule } from "./recruiters/recruiters.module";
 import { ProfileSettingsModule } from "./profile-settings/profile-settings.module";
+import { VacancyModule } from "./vacancy/vacancy.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { ProfileSettingsModule } from "./profile-settings/profile-settings.modul
     HttpClientModule,
     CandidatesModule,
     RecruitersModule,
-    ProfileSettingsModule
+    ProfileSettingsModule,
+    VacancyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

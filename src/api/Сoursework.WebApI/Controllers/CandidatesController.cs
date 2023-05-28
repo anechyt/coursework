@@ -2,6 +2,9 @@
 using Coursework.Application.Candidates.Commands.DeleteCandidate;
 using Coursework.Application.Candidates.Commands.UpdateCandidate;
 using Coursework.Application.Candidates.Queries.GetCandidateByUserGID;
+using Coursework.Application.Candidates.Queries.GetCandidatesByBio;
+using Coursework.Application.Candidates.Queries.GetCandidatesByResume;
+using Coursework.Application.Candidates.Queries.GetCandidatesBySkills;
 using Coursework.Persistence;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +50,7 @@ namespace Сoursework.WebApI.Controllers
         {
             var candidates = (
                 from candidate in _context.Candidates
-                join users in _context.Users on candidate.UserGID equals users.GID
+                join user in _context.Users on candidate.UserGID equals user.GID
                 join candidateSkill in _context.CandidateSkills on candidate.GID equals candidateSkill.CandidateGID
                 join skill in _context.Skills on candidateSkill.SkillGID equals skill.GID
                 group skill by candidate into g
@@ -75,6 +78,30 @@ namespace Сoursework.WebApI.Controllers
         public async Task<IActionResult> GetCandidateByUserGID(string userGID)
         {
             var result = await _mediator.Send(new GetCandidateByUserGIDRequest { UserGID = Guid.Parse(userGID) });
+
+            return Ok(result);
+        }
+
+        [HttpPost("candidatesbyskills")]
+        public async Task<IActionResult> GetCandidatesBySkills([FromBody] List<string> skills)
+        {
+            var result = await _mediator.Send(new GetCandidatesBySkillsRequest { Skills = skills });
+
+            return Ok(result);
+        }
+
+        [HttpPost("candidatesbyresume")]
+        public async Task<IActionResult> GetCandidatesByResume([FromBody] List<string> resume)
+        {
+            var result = await _mediator.Send(new GetCandidatesByResumeRequest { Resume = resume });
+
+            return Ok(result);
+        }
+
+        [HttpPost("candidatesbybio")]
+        public async Task<IActionResult> GetCandidatesByBio([FromBody] List<string> bio)
+        {
+            var result = await _mediator.Send(new GetCandidatesByBioRequest { Bio = bio });
 
             return Ok(result);
         }
