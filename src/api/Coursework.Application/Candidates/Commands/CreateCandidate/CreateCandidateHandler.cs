@@ -5,7 +5,7 @@ using Mediator;
 
 namespace Coursework.Application.Candidates.Commands.CreateCandidate
 {
-    public class CreateCandidateHandler : ICommandHandler<CreateCandidateRequest, Candidate>
+    public class CreateCandidateHandler : ICommandHandler<CreateCandidateRequest, Candidate?>
     {
         private readonly CoursworkContext _context;
 
@@ -14,16 +14,43 @@ namespace Coursework.Application.Candidates.Commands.CreateCandidate
             _context = context;
         }
 
-        public async ValueTask<Candidate> Handle(CreateCandidateRequest command, CancellationToken cancellationToken)
+        public async ValueTask<Candidate?> Handle(CreateCandidateRequest command, CancellationToken cancellationToken)
         {
             var mapper = new CourseworkMapper();
 
-            var candidate = mapper.CreateCandidateCommandMapper(command);
+            var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
 
-            _context.Candidates.Add(candidate);
-            await _context.SaveChangesAsync(cancellationToken);
+            try
+            {
+                var candidate = mapper.CreateCandidateCommandMapper(command);
+                var skills = mapper.SkillModelMapper(command.Skills);
 
-            return candidate;
+                _context.Skills.AddRange(skills);
+                _context.Candidates.Add(candidate);
+
+                foreach (var skill in skills)
+                {
+                    var candidateSkill = new CandidateSkill
+                    {
+                        CandidateGID = candidate.GID,
+                        SkillGID = skill.GID,
+                        Skill = skill,
+                        Candidate = candidate
+                    };
+
+                    _context.CandidateSkills.Add(candidateSkill);
+                }
+                await _context.SaveChangesAsync(cancellationToken);
+
+                await transaction.CommitAsync(cancellationToken);
+
+                return candidate;
+            }
+            catch (Exception ex) 
+            {
+                await transaction.RollbackAsync(cancellationToken);
+                throw ex;
+            }
         }
     }
 }

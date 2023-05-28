@@ -23,8 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Candidates\Queries\GetCandidateByLocation\" />
-    <Folder Include="Vacancies\Commands\DeleteVacancy\" />
+    <Folder Include="Skills\Queries\GetSkillByName\" />
     <Folder Include="Vacancies\Queries\GetVacanciesByRecruiterGID\" />
     <Folder Include="VacancyStatuses\Queries\" />
   </ItemGroup>

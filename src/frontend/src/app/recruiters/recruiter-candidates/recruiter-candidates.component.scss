@@ -1,3 +1,7 @@
+.recruiter-candidate-container {
+  display: flex;
+}
+
 .container-title {
   color: honeydew;
   font-size: x-large;
@@ -8,7 +12,6 @@
 .candidate {
   background-color: #202531;
   width: 40rem;
-  height: 100%;
   margin-bottom: 1rem;
   border-radius: 1rem;
   padding: 1rem 1rem 1rem 1rem;
@@ -19,6 +22,15 @@
   flex-direction: row;
 }
 
+.container-header {
+  display: flex;
+}
+
+.refresh-button {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
 .text {
   color: honeydew;
   margin-bottom: 1rem;
@@ -26,4 +38,28 @@
 
 .initials {
   margin-right: 1rem;
+}
+
+.candidate-skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill {
+  margin-right: 1rem;
+  color: honeydew;
+  background-color: #141722;
+  padding: 0.3rem 0.5rem;
+}
+
+.search-container {
+  margin-top: 5rem;
+  margin-left: 5rem;
+}
+
+.search-item {
+  padding: 1rem 1rem 1rem 1rem;
+  margin-bottom: 2rem;
+  border: 0.2rem solid #202531;
+  border-radius: 1rem;
 }

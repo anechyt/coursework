@@ -21,6 +21,8 @@ namespace Coursework.Persistence
 
         public virtual DbSet<VacancySkill> VacancySkills { get; set; } = null!;
 
+        public virtual DbSet<CandidateSkill> CandidateSkills { get; set; } = null!;
+
         public virtual DbSet<VacancyStatus> VacancyStatuses { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

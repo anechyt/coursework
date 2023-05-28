@@ -1,6 +1,8 @@
-﻿namespace Coursework.Domain.Entities
+﻿using Coursework.Domain.Entities;
+
+namespace Coursework.Application.Vacancies.Models
 {
-    public class Vacancy
+    public class VacanciesResponseModel
     {
         public Guid GID { get; set; }
 
@@ -12,12 +14,10 @@
 
         public string Location { get; set; }
 
+        public List<Skill> Skills { get; set; }
+
         public Guid VacancyStatusGID { get; set; }
 
         public Guid RecruiterGID { get; set; }
-
-        public VacancyStatus VacancyStatus { get; set; }
-
-        public Recruiter Recruiter { get; set; }
     }
 }

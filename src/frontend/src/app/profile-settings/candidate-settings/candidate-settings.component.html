@@ -3,12 +3,25 @@
     <div class="text">Candidate Profile Setting</div>
   </div>
   <div class="header-container">
-    <app-input inputClass="input" placeholder="FirstName" [(value)]="firstName"></app-input>
-    <app-input inputClass="input" placeholder="LastName" [(value)]="lastName"></app-input>
-    <app-input inputClass="input" placeholder="PhoneNumber" [(value)]="phoneNumber"></app-input>
-    <app-input inputClass="input" placeholder="Location" [(value)]="location"></app-input>
-    <textarea class="biography" placeholder="Biography" [(ngModel)]="biography"></textarea>
-    <textarea class="biography" placeholder="Resume" [(ngModel)]="resume"></textarea>
+    <div class="input-wrapper">
+      <app-input inputClass="input" placeholder="FirstName" [(value)]="firstName"></app-input>
+      <app-input inputClass="input" placeholder="LastName" [(value)]="lastName"></app-input>
+      <app-input inputClass="input" placeholder="PhoneNumber" [(value)]="phoneNumber"></app-input>
+      <app-input inputClass="input" placeholder="Location" [(value)]="location"></app-input>
+      <div class="skills-wrapper">
+        <ul class="skills">
+          <li class="skill" *ngFor="let skill of skills">
+            {{ skill.name }}
+          </li>
+        </ul>
+        <app-input inputClass="input" placeholder="Skill" [(value)]="skill"></app-input>
+        <app-button buttonClass="button" (onClick)="addSkill()">Add Skill</app-button>
+      </div>
+    </div>
+    <div class="textares-wrapper">
+      <textarea class="biography" placeholder="Biography" [(ngModel)]="biography"></textarea>
+      <textarea class="biography" placeholder="Resume" [(ngModel)]="resume"></textarea>
+    </div>
   </div>
   <div class="footer-container">
     <app-button buttonClass="button" (onClick)="handleClick()">Submit</app-button>

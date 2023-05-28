@@ -9,5 +9,11 @@
     <div class="text">Location: {{candidate.location}}</div>
     <div class="text">Bio: {{candidate.biography}}</div>
     <div class="text">Resume: {{candidate.resume}}</div>
+    <div class="text">Skills:</div>
+    <div class="candidate-skills">
+      <div class="skill" *ngFor="let skill of candidate.skills">
+        {{ skill.name }}
+      </div>
+    </div>
   </div>
 </div>

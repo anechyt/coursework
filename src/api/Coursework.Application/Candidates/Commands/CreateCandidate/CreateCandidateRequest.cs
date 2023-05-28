@@ -1,4 +1,5 @@
-﻿using Coursework.Domain.Entities;
+﻿using Coursework.Application.Models;
+using Coursework.Domain.Entities;
 using Mediator;
 
 namespace Coursework.Application.Candidates.Commands.CreateCandidate
@@ -16,6 +17,8 @@ namespace Coursework.Application.Candidates.Commands.CreateCandidate
         public string Resume { get; set; } = null!;
 
         public string Location { get; set; } = null!;
+
+        public List<SkillModel> Skills { get; set; }
 
         public string UserGID { get; set; }
     }

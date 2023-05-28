@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfileSettingsService } from "../services/profile-settings.service";
 import { Router } from "@angular/router";
-import { Candidate } from "../../candidates/models/candidate";
+import {CandidatesResponse} from "../../candidates/models/candidates-response";
+import { Skill } from "../../candidates/models/skill";
 
 @Component({
   selector: 'app-candidate-settings',
@@ -15,13 +16,14 @@ export class CandidateSettingsComponent implements OnInit {
   public biography: string | null = null;
   public resume: string | null = null;
   public location: string | null = null;
-  public candidateRequest!: Candidate;
+  public skill: string = '';
+  public skills: Array<Skill> = [];
+  public candidateRequest!: CandidatesResponse;
 
   constructor(private profileSettingsService: ProfileSettingsService,
               private router: Router) { }
 
   ngOnInit(): void {
-    console.log("candidate settings");
   }
 
   public handleClick(): void {
@@ -32,6 +34,7 @@ export class CandidateSettingsComponent implements OnInit {
       biography: '',
       resume: '',
       location: '',
+      skills: [],
       userGID: ''
     }
 
@@ -41,7 +44,10 @@ export class CandidateSettingsComponent implements OnInit {
     this.candidateRequest.biography = this.biography;
     this.candidateRequest.resume = this.resume;
     this.candidateRequest.location = this.location;
+    this.candidateRequest.skills = this.skills
     this.candidateRequest.userGID = localStorage.getItem("USER_GID");
+
+    console.log(this.candidateRequest)
 
     this.profileSettingsService.createCandidate(this.candidateRequest).subscribe((data) =>
     {
@@ -52,5 +58,9 @@ export class CandidateSettingsComponent implements OnInit {
     }, (error) => {
       console.log(error);
     })
+  }
+
+  public addSkill() {
+    this.skills.push(new Skill(this.skill));
   }
 }

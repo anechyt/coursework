@@ -25,3 +25,15 @@
 .initials {
   margin-right: 1rem;
 }
+
+.candidate-skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill {
+  margin-right: 1rem;
+  color: honeydew;
+  background-color: #141722;
+  padding: 0.3rem 0.5rem;
+}

@@ -2,12 +2,9 @@
 using Coursework.Application.Candidates.Commands.DeleteCandidate;
 using Coursework.Application.Candidates.Commands.UpdateCandidate;
 using Coursework.Application.Candidates.Queries.GetCandidateByUserGID;
-using Coursework.Application.Models.GetAllQuery;
-using Coursework.Domain.Entities;
 using Coursework.Persistence;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Сoursework.WebApI.Controllers
 {
@@ -48,21 +45,28 @@ namespace Сoursework.WebApI.Controllers
         [HttpGet("candidates")]
         public async Task<IActionResult> GetAllCandidates(CancellationToken cancellationToken)
         {
-            var candidates = await _context.Candidates.Join(_context.Users,
-                candidate => candidate.UserGID,
-                user => user.GID,
-                (candidate, user) => new
+            var candidates = (
+                from candidate in _context.Candidates
+                join users in _context.Users on candidate.UserGID equals users.GID
+                join candidateSkill in _context.CandidateSkills on candidate.GID equals candidateSkill.CandidateGID
+                join skill in _context.Skills on candidateSkill.SkillGID equals skill.GID
+                group skill by candidate into g
+                select new
                 {
-                    candidate.GID,
-                    candidate.FirstName,
-                    candidate.LastName,
-                    candidate.PhoneNumber,
-                    candidate.Biography,
-                    candidate.Resume,
-                    candidate.UserGID,
-                    user.Email,
-                    user.Role
-                }).ToListAsync(cancellationToken);
+                    GID = g.Key.GID,
+                    FirstName = g.Key.FirstName,
+                    LastName = g.Key.LastName,
+                    PhoneNumber = g.Key.PhoneNumber,
+                    Biography = g.Key.Biography,
+                    Resume = g.Key.Resume,
+                    Location = g.Key.Location,
+                    UserGID = g.Key.UserGID,
+                    UserEmail = g.Key.User.Email,
+                    UserRole = g.Key.User.Role,
+                    Skills = g.ToList()
+                }
+            ).ToList();
+
 
             return Ok(candidates);
         }

@@ -4,6 +4,7 @@ import { Recruiter } from "../../recruiters/models/recruiter";
 import { environment } from "../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Candidate} from "../../candidates/models/candidate";
+import {CandidatesResponse} from "../../candidates/models/candidates-response";
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class ProfileSettingsService {
         return data;
       }));
   }
-  public createCandidate(candidateRequest: Candidate): Observable<Candidate> {
-    return this.httpClient.post<Candidate>(`${environment.baseUrl}/Candidates/create`, JSON.stringify(candidateRequest), this.httpOptions)
+  public createCandidate(candidateRequest: CandidatesResponse): Observable<Candidate> {
+    return this.httpClient.post<CandidatesResponse>(`${environment.baseUrl}/Candidates/create`, JSON.stringify(candidateRequest), this.httpOptions)
       .pipe(map((data) => {
         return data;
       }));

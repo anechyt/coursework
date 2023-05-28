@@ -18,12 +18,39 @@ namespace Coursework.Application.Vacancies.Commands.CreateVacancy
         {
             var mapper = new CourseworkMapper();
 
-            var candidate = mapper.CreateVacancyCommandMapper(command);
+            var transaction = await _context.Database.BeginTransactionAsync(cancellationToken);
 
-            _context.Vacancies.Add(candidate);
-            await _context.SaveChangesAsync(cancellationToken);
+            try
+            {
+                var vacancy = mapper.CreateVacancyCommandMapper(command);
+                var skills = mapper.SkillModelMapper(command.Skills);
 
-            return candidate;
+                _context.Skills.AddRange(skills);
+                _context.Vacancies.Add(vacancy);
+
+                foreach (var skill in skills)
+                {
+                    var vacancySkill = new VacancySkill
+                    {
+                        VacancyGID = vacancy.GID,
+                        SkillGID = skill.GID,
+                        Skill = skill,
+                        Vacancy = vacancy
+                    };
+
+                    _context.VacancySkills.Add(vacancySkill);
+                }
+                await _context.SaveChangesAsync(cancellationToken);
+
+                await transaction.CommitAsync(cancellationToken);
+
+                return vacancy;
+            }
+            catch (Exception ex)
+            {
+                await transaction.RollbackAsync(cancellationToken);
+                throw ex;
+            }
         }
     }
 }

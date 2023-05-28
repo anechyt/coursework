@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RecruiterService } from "../services/recruiter.service";
 import { Router } from "@angular/router";
-import * as path from "path";
 import {Observable} from "rxjs";
-import {Candidate} from "../../candidates/models/candidate";
+import { CandidatesResponse } from "../../candidates/models/candidates-response";
 
 @Component({
   selector: 'app-recruiter-home',
@@ -11,7 +10,7 @@ import {Candidate} from "../../candidates/models/candidate";
   styleUrls: ['./recruiter-home.component.scss']
 })
 export class RecruiterHomeComponent implements OnInit {
-  public candidates$!: Observable<Candidate[]>;
+  public candidates$!: Observable<CandidatesResponse[]>;
 
   public firstName: string | null = null;
   public lastName: string | null = null;

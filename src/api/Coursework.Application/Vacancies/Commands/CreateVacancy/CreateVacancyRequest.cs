@@ -1,4 +1,5 @@
-﻿using Coursework.Domain.Entities;
+﻿using Coursework.Application.Models;
+using Coursework.Domain.Entities;
 using Mediator;
 
 namespace Coursework.Application.Vacancies.Commands.CreateVacancy
@@ -13,7 +14,7 @@ namespace Coursework.Application.Vacancies.Commands.CreateVacancy
 
         public string Location { get; set; }
 
-        public List<string> Skills { get; set; }
+        public List<SkillModel> Skills { get; set; }
 
         public string VacancyStatusGID { get; set; }
 

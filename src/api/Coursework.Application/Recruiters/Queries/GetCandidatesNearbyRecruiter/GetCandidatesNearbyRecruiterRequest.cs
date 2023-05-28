@@ -1,10 +1,10 @@
-﻿using Coursework.Application.Models.GetAllQuery;
-using Coursework.Domain.Entities;
+﻿using Coursework.Application.Candidates.Models;
+using Coursework.Application.Models.GetAllQuery;
 using Mediator;
 
 namespace Coursework.Application.Recruiters.Queries.GetCandidatesNearbyRecruiter
 {
-    public class GetCandidatesNearbyRecruiterRequest : IRequest<GetItemsList<Candidate>>
+    public class GetCandidatesNearbyRecruiterRequest : IRequest<GetItemsList<CandidateResponseModel>>
     {
         public Guid UserGID { get; set; }
 

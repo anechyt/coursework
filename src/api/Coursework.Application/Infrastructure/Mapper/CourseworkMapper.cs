@@ -1,5 +1,6 @@
 ﻿using Coursework.Application.Candidates.Commands.CreateCandidate;
 using Coursework.Application.Candidates.Commands.UpdateCandidate;
+using Coursework.Application.Models;
 using Coursework.Application.Recruiters.Commands.CreateRecruiter;
 using Coursework.Application.Recruiters.Commands.UpdateRecruiter;
 using Coursework.Application.Skills.Commands.CreateSkill;
@@ -14,6 +15,8 @@ namespace Coursework.Application.Infrastructure.Mapper
     public partial class CourseworkMapper
     {
         public partial Skill CreateSkillCommandMapper(CreateSkillRequest skillRequest);
+        public partial List<Skill> SkillModelMapper(List<SkillModel> skillModel);
+
         public partial VacancyStatus CreateVacancyStatusCommandMapper(CreateVacancyStatusRequest vacancyStatusRequest);
 
         public partial Candidate CreateCandidateCommandMapper(CreateCandidateRequest candidateRequest);
