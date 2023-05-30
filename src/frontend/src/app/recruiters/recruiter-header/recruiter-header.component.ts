@@ -20,5 +20,4 @@ export class RecruiterHeaderComponent implements OnInit {
   public onItemClick(item: string) {
     this.router.navigate([item]);
   }
-
 }

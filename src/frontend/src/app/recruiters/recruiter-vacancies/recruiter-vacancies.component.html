@@ -3,5 +3,21 @@
     <p class="container-title">Your Vacancies</p>
     <app-button class="add-button" buttonClass="button" (onClick)="showCreateVacancyModal(1)">Add Vacancy</app-button>
   </div>
-  <app-create-vacancy-modal (close)="closeModal($event)" *ngIf="showModal === 1"></app-create-vacancy-modal>
+  <div class="container-body">
+    <div class="vacancy" *ngFor="let vacancy of vacancies$ | async">
+      <div class="vacancy-header">
+        <div class="text initials">{{vacancy.name}}</div>
+      </div>
+      <div class="text">Description {{vacancy.description}}</div>
+      <div class="text">Location: {{vacancy.location}}</div>
+      <div class="text">Salary: {{vacancy.salary}}</div>
+      <div class="text">Skills:</div>
+      <div class="vacancy-skills">
+        <div class="skill" *ngFor="let skill of vacancy.skills">
+          {{ skill.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-create-vacancy-modal [recruiterGid]="recruiterGid" (close)="closeModal($event)" *ngIf="showModal === 1"></app-create-vacancy-modal>
 </div>

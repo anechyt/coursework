@@ -4,14 +4,16 @@ import { RecruiterHomeComponent } from "./recruiter-home/recruiter-home.componen
 import { RecruiterLayoutComponent } from "./recruiter-layout/recruiter-layout.component";
 import { RecruiterCandidatesComponent } from "./recruiter-candidates/recruiter-candidates.component";
 import { RecruiterVacanciesComponent } from "./recruiter-vacancies/recruiter-vacancies.component";
-import  { RecruiterStatisticsComponent } from "./recruiter-statistics/recruiter-statistics.component";
+import { RecruiterStatisticsComponent } from "./recruiter-statistics/recruiter-statistics.component";
+import { RecruiterAllVacanciesComponent } from "./recruiter-all-vacancies/recruiter-all-vacancies.component";
 
 const routes: Routes = [
   { path: '', component: RecruiterLayoutComponent, children: [
       { path: 'recruiter-home', component: RecruiterHomeComponent },
       { path: 'recruiter-candidates', component: RecruiterCandidatesComponent },
       { path: 'recruiter-vacancies', component: RecruiterVacanciesComponent },
-      { path: 'recruiter-statistics', component: RecruiterStatisticsComponent }
+      { path: 'recruiter-statistics', component: RecruiterStatisticsComponent },
+      { path: 'recruiter-all-vacancies', component: RecruiterAllVacanciesComponent }
     ]
   }
 ];

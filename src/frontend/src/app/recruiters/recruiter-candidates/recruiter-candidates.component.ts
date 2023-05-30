@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { RecruiterService } from "../services/recruiter.service";
 import { CandidatesResponse } from "../../candidates/models/candidates-response";
 import {CandidateView} from "../../candidates/models/candidate-view";
+import {CandidateService} from "../../candidates/services/candidate.service";
 
 @Component({
   selector: 'app-recruiter-candidates',
@@ -19,14 +20,14 @@ export class RecruiterCandidatesComponent implements OnInit {
   public resumes: string[] = [];
   public candidates$!: Observable<CandidateView[]>
 
-  constructor(private recruiterService: RecruiterService) { }
+  constructor(private candidateService: CandidateService) { }
 
   ngOnInit(): void {
-    this.candidates$ = this.recruiterService.getCandidates();
+    this.candidates$ = this.candidateService.getCandidates();
   }
 
   public refreshCandidates(): void {
-    this.candidates$ = this.recruiterService.getCandidates();
+    this.candidates$ = this.candidateService.getCandidates();
     this.skills = [];
     this.bios = [];
     this.resumes = [];
@@ -49,14 +50,14 @@ export class RecruiterCandidatesComponent implements OnInit {
   }
 
   public searchBySkills(): void {
-    this.candidates$ = this.recruiterService.getCandidatesBySkills(this.skills);
+    this.candidates$ = this.candidateService.getCandidatesBySkills(this.skills);
   }
 
   public searchByBio(): void {
-    this.candidates$ = this.recruiterService.getCandidatesByBio(this.bios);
+    this.candidates$ = this.candidateService.getCandidatesByBio(this.bios);
   }
 
   public searchByResume(): void {
-    this.candidates$ = this.recruiterService.getCandidatesByResume(this.resumes);
+    this.candidates$ = this.candidateService.getCandidatesByResume(this.resumes);
   }
 }

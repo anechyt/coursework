@@ -10,6 +10,7 @@ import { RecruiterCandidatesComponent } from './recruiter-candidates/recruiter-c
 import { RecruiterVacanciesComponent } from './recruiter-vacancies/recruiter-vacancies.component';
 import { RecruiterStatisticsComponent } from './recruiter-statistics/recruiter-statistics.component';
 import { VacancyModule } from "../vacancy/vacancy.module";
+import { RecruiterAllVacanciesComponent } from './recruiter-all-vacancies/recruiter-all-vacancies.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { VacancyModule } from "../vacancy/vacancy.module";
     RecruiterHeaderComponent,
     RecruiterCandidatesComponent,
     RecruiterVacanciesComponent,
-    RecruiterStatisticsComponent
+    RecruiterStatisticsComponent,
+    RecruiterAllVacanciesComponent
   ],
   imports: [
     CommonModule,

@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Skills\Queries\GetSkillByName\" />
-    <Folder Include="Vacancies\Queries\GetVacanciesByRecruiterGID\" />
     <Folder Include="VacancyStatuses\Queries\" />
   </ItemGroup>
 

@@ -11,3 +11,37 @@
   margin-top: 1.1rem;
   margin-left: 5rem;
 }
+
+.vacancy {
+  background-color: #202531;
+  width: 40rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.vacancy-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.text {
+  color: honeydew;
+  margin-bottom: 1rem;
+}
+
+.initials {
+  margin-right: 1rem;
+}
+
+.vacancy-skills {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.skill {
+  margin-right: 1rem;
+  color: honeydew;
+  background-color: #141722;
+  padding: 0.3rem 0.5rem;
+}

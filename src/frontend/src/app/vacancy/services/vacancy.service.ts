@@ -4,6 +4,7 @@ import { map, Observable } from "rxjs";
 import { ResponseModel } from "../../shared/models/ResponseModel";
 import { environment } from "../../../environments/environment";
 import { Vacancy } from "../models/vacancy";
+import { VacancyResponse } from "../models/vacancy-response";
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,15 @@ export class VacancyService {
     })
   };
 
-  public createVacancy(): Observable<Vacancy> {
-    return this.httpClient.get<ResponseModel<Vacancy>>(`${environment.baseUrl}/Vacancy/`)
+  public createVacancy(vacancyRequest: Vacancy): Observable<Vacancy> {
+    return this.httpClient.post<Vacancy>(`${environment.baseUrl}/Vacancy/create`,  JSON.stringify(vacancyRequest), this.httpOptions)
+      .pipe(map((data) => {
+        return data;
+      }));
+  }
+
+  public getVacanciesByRecruiterGID(recruiterGID: string): Observable<VacancyResponse[]> {
+    return this.httpClient.get<ResponseModel<VacancyResponse[]>>(`${environment.baseUrl}/Vacancy/vacanciesbyrecruitergid?recruiterGID=${recruiterGID}`)
       .pipe(map((data) => {
         return data.items;
       }));

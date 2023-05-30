@@ -2,7 +2,7 @@
 
 namespace Coursework.Application.Vacancies.Models
 {
-    public class VacanciesResponseModel
+    public class VacancyResponseModel
     {
         public Guid GID { get; set; }
 
@@ -16,8 +16,12 @@ namespace Coursework.Application.Vacancies.Models
 
         public List<Skill> Skills { get; set; }
 
-        public Guid VacancyStatusGID { get; set; }
+        public string VacancyStatusName { get; set; }
 
-        public Guid RecruiterGID { get; set; }
+        public string RecruiterFirstName { get; set; }
+
+        public string RecruiterLastName { get; set; }
+
+        public string RecruiterPhoneNumber { get; set; }
     }
 }

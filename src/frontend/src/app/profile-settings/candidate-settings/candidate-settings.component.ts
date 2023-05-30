@@ -47,8 +47,6 @@ export class CandidateSettingsComponent implements OnInit {
     this.candidateRequest.skills = this.skills
     this.candidateRequest.userGID = localStorage.getItem("USER_GID");
 
-    console.log(this.candidateRequest)
-
     this.profileSettingsService.createCandidate(this.candidateRequest).subscribe((data) =>
     {
       localStorage.setItem("FIRSTNAME", data.firstName ?? "");
