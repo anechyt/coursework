@@ -1,6 +1,7 @@
-﻿using Coursework.Application.Recruiters.Queries.GetRecruiterByUserGID;
+﻿using Coursework.Application.Models.GetAllQuery;
 using Coursework.Application.Vacancies.Commands.CreateVacancy;
 using Coursework.Application.Vacancies.Commands.DeleteVacancy;
+using Coursework.Application.Vacancies.Models;
 using Coursework.Application.Vacancies.Queries.GetVacanciesByRecruiterGID;
 using Coursework.Persistence;
 using Mediator;
@@ -39,9 +40,29 @@ namespace Сoursework.WebApI.Controllers
         [HttpGet("vacancies")]
         public async Task<IActionResult> GetAllVacancies(CancellationToken cancellationToken)
         {
-            var vacancies = await _context.Vacancies.AsNoTracking().ToListAsync(cancellationToken);
+            var vacancies = await (
+                    from vacancy in _context.Vacancies
+                    join vacancyStatus in _context.VacancyStatuses on vacancy.VacancyStatusGID equals vacancyStatus.GID
+                    join recruiter in _context.Recruiters on vacancy.RecruiterGID equals recruiter.GID
+                    join vacancySkills in _context.VacancySkills on vacancy.GID equals vacancySkills.VacancyGID
+                    join skill in _context.Skills on vacancySkills.SkillGID equals skill.GID
+                    group skill by vacancy into g
+                    select new VacancyResponseModel
+                    {
+                        GID = g.Key.GID,
+                        Name = g.Key.Name,
+                        Description = g.Key.Description,
+                        Salary = g.Key.Salary,
+                        Location = g.Key.Location,
+                        VacancyStatusName = g.Key.VacancyStatus.Name,
+                        RecruiterFirstName = g.Key.Recruiter.FirstName,
+                        RecruiterLastName = g.Key.Recruiter.LastName,
+                        RecruiterPhoneNumber = g.Key.Recruiter.PhoneNumber,
+                        Skills = g.ToList()
+                    }
+                ).ToListAsync(cancellationToken);
 
-            return Ok(vacancies);
+            return Ok(new GetItemsList<VacancyResponseModel> { Items = vacancies });
         }
 
         [HttpGet("vacanciesbyrecruitergid")]

@@ -32,4 +32,11 @@ export class VacancyService {
         return data.items;
       }));
   }
+
+  public getVacancies(): Observable<VacancyResponse[]> {
+    return this.httpClient.get<ResponseModel<VacancyResponse[]>>(`${environment.baseUrl}/Vacancy/vacancies`)
+      .pipe(map((data) => {
+        return data.items;
+      }));
+  }
 }
