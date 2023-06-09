@@ -1,6 +1,24 @@
+.recruiter-vacancies-container {
+  display: flex;
+}
+
 .container-title {
   color: honeydew;
   font-size: x-large;
+}
+
+.container-header {
+  display: flex;
+}
+
+.add-button {
+  margin-top: 1.1rem;
+  margin-left: 5rem;
+}
+
+.refresh-button {
+  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
 .vacancy {
@@ -35,4 +53,16 @@
   color: honeydew;
   background-color: #141722;
   padding: 0.3rem 0.5rem;
+}
+
+.search-container {
+  margin-top: 5rem;
+  margin-left: 5rem;
+}
+
+.search-item {
+  padding: 1rem 1rem 1rem 1rem;
+  margin-bottom: 2rem;
+  border: 0.2rem solid #202531;
+  border-radius: 1rem;
 }

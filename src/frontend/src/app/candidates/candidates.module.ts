@@ -6,6 +6,7 @@ import { SharedModule } from "../shared/shared.module";
 import { FormsModule } from "@angular/forms";
 import { CandidateRoutingModule } from "./candidate-routing.module";
 import { CandidateHeaderComponent } from './candidate-header/candidate-header.component';
+import { CandidateVacanciesComponent } from './candidate-vacancies/candidate-vacancies.component';
 
 
 
@@ -13,7 +14,8 @@ import { CandidateHeaderComponent } from './candidate-header/candidate-header.co
   declarations: [
     CandidateHomeComponent,
     CandidateLayoutComponent,
-    CandidateHeaderComponent
+    CandidateHeaderComponent,
+    CandidateVacanciesComponent
   ],
   imports: [
     CommonModule,

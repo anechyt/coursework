@@ -1,8 +1,11 @@
-﻿using Coursework.Application.Models.GetAllQuery;
+﻿using Coursework.Application.Candidates.Queries.GetCandidatesBySkills;
+using Coursework.Application.Models.GetAllQuery;
 using Coursework.Application.Vacancies.Commands.CreateVacancy;
 using Coursework.Application.Vacancies.Commands.DeleteVacancy;
 using Coursework.Application.Vacancies.Models;
 using Coursework.Application.Vacancies.Queries.GetVacanciesByRecruiterGID;
+using Coursework.Application.Vacancies.Queries.GetVacanciesBySkills;
+using Coursework.Application.Vacancies.Queries.GetVacanciesNearbyCandidate;
 using Coursework.Persistence;
 using Mediator;
 using Microsoft.AspNetCore.Mvc;
@@ -69,6 +72,22 @@ namespace Сoursework.WebApI.Controllers
         public async Task<IActionResult> GetVacanciesByRecruiterGID(string recruiterGID)
         {
             var result = await _mediator.Send(new GetVacanciesByRecruiterGIDRequest { RecruiterGID = Guid.Parse(recruiterGID) });
+
+            return Ok(result);
+        }
+
+        [HttpGet("vacanciesnearby")]
+        public async Task<IActionResult> GetVacanciesNearByCandidate(string userGID, int maxDistance)
+        {
+            var result = await _mediator.Send(new GetVacanciesNearbyCandidateRequest { UserGID = Guid.Parse(userGID), MaxDistance = maxDistance });
+
+            return Ok(result);
+        }
+
+        [HttpPost("vacanciesbyskills")]
+        public async Task<IActionResult> GetVacanciesBySkills([FromBody] List<string> skills)
+        {
+            var result = await _mediator.Send(new GetVacanciesBySkillsRequest { Skills = skills });
 
             return Ok(result);
         }

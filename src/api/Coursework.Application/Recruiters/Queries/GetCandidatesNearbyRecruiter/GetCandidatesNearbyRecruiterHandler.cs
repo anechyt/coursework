@@ -29,8 +29,6 @@ namespace Coursework.Application.Recruiters.Queries.GetCandidatesNearbyRecruiter
 
             var recruiterLocation = await _nearbySearchService.GetLocationByAddress(recruiter.Location, cancellationToken);
 
-            //var candidates = await _context.Candidates.AsNoTracking().ToListAsync(cancellationToken);
-
             var candidates = await (
                     from candidate in _context.Candidates
                     join users in _context.Users on candidate.UserGID equals users.GID

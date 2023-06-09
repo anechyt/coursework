@@ -1,0 +1,45 @@
+<div class="recruiter-vacancies-container">
+  <div>
+    <div class="container-header">
+      <p class="container-title">Vacancies</p>
+      <app-button class="refresh-button" buttonClass="button" (onClick)="refreshVacancies()">Refresh</app-button>
+    </div>
+    <div class="vacancy" *ngFor="let vacancy of vacancies$ | async">
+      <div class="vacancy-header">
+        <div class="text initials">{{vacancy.name}}</div>
+      </div>
+      <div class="text">Description {{vacancy.description}}</div>
+      <div class="text">Location: {{vacancy.location}}</div>
+      <div class="text">Salary: {{vacancy.salary}}</div>
+      <div class="text">Skills:</div>
+      <div class="vacancy-skills">
+        <div class="skill" *ngFor="let skill of vacancy.skills">
+          {{ skill.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="search-container">
+    <div class="search-item">
+      <ul class="skills">
+        <li class="skill" *ngFor="let skill of skills">
+          {{ skill }}
+        </li>
+      </ul>
+      <app-input inputClass="input" placeholder="Search By Skills" [(value)]="skill"></app-input>
+      <app-button buttonClass="button" (onClick)="searchBySkills()">Search</app-button>
+      <app-button buttonClass="button" (onClick)="addSkill()">Add Skill</app-button>
+    </div>
+    <div class="search-item">
+      <ul class="skills">
+        <li class="skill" *ngFor="let resume of resumes">
+          {{ resume }}
+        </li>
+      </ul>
+      <app-input inputClass="input" placeholder="Search By Resume" [(value)]="resume"></app-input>
+      <app-button buttonClass="button" (onClick)="searchByResume()">Search</app-button>
+      <app-button buttonClass="button" (onClick)="addResume()">Add Resume</app-button>
+    </div>
+  </div>
+</div>
+

@@ -5,6 +5,7 @@ import { ResponseModel } from "../../shared/models/ResponseModel";
 import { environment } from "../../../environments/environment";
 import { Vacancy } from "../models/vacancy";
 import { VacancyResponse } from "../models/vacancy-response";
+import {CandidateView} from "../../candidates/models/candidate-view";
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,13 @@ export class VacancyService {
 
   public getVacancies(): Observable<VacancyResponse[]> {
     return this.httpClient.get<ResponseModel<VacancyResponse[]>>(`${environment.baseUrl}/Vacancy/vacancies`)
+      .pipe(map((data) => {
+        return data.items;
+      }));
+  }
+
+  public getVacanciesNearbyCandidate(userGID: string, maxDistance: number): Observable<VacancyResponse[]> {
+    return this.httpClient.get<ResponseModel<VacancyResponse[]>>(`${environment.baseUrl}/Vacancy/vacanciesnearby?userGID=${userGID}&maxDistance=${maxDistance}`)
       .pipe(map((data) => {
         return data.items;
       }));

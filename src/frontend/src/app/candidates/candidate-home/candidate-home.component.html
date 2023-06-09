@@ -1,1 +1,18 @@
-<p>candidate-home works!sadasd</p>
+<div class="home-container">
+  <p class="container-title">Vacancies near you ({{location}})</p>
+  <div class="vacancy" *ngFor="let vacancy of vacancies$ | async">
+    <div class="vacancy-header">
+      <div class="text initials">{{vacancy.name}}</div>
+    </div>
+    <div class="text">Description {{vacancy.description}}</div>
+    <div class="text">Location: {{vacancy.location}}</div>
+    <div class="text">Salary: {{vacancy.salary}}</div>
+    <div class="text">Skills:</div>
+    <div class="vacancy-skills">
+      <div class="skill" *ngFor="let skill of vacancy.skills">
+        {{ skill.name }}
+      </div>
+    </div>
+  </div>
+</div>
+
